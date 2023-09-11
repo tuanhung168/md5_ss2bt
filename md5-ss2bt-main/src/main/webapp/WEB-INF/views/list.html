@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>List Todo</h1>
+<a href="/add"> Add new Todo</a>
+<table border="10" cellpadding="20" cellspacing="10">
+    <tr>
+        <th>ID</th>
+        <th>Content</th>
+        <th>Status</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="t:${list}" th:object="${t}">
+        <td th:text="*{id}"></td>
+        <td th:text="*{content}"></td>
+        <td th:text="*{status}?'Success':'Fail'"></td>
+        <td><a th:href="@{|/edit/*{id}|}">Edit</a></td>
+        <td><a th:href="@{|/delete/*{id}|}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>
